@@ -17,6 +17,8 @@ matrix:
       env: JOB=Linux3.1
       sudo: required
       services: docker
+      before_install:
+        - docker run -v `pwd`:`pwd` -w `pwd` --rm norionomura/sourcekit:31 swift package edit Yams --revision 0.3.1
     - script: make docker_test_302
       env: JOB=Linux3.0.2
       sudo: required
